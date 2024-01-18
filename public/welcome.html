@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome to the Website!</h2>
+    <p>Click the button below to view your profile.</p>
+
+    <button id="profileButton">View Profile</button>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('profileButton').addEventListener('click', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+
+            if (username) {
+                window.location.href = `/profile?username=${username}`;
+            } else {
+                console.error('Username not found in URL parameters');
+            }
+        });
+    </script>
+</body>
+</html>
